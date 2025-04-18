@@ -17,13 +17,12 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
-import { getServerSession } from 'next-auth';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  const [animatedText, setAnimatedText] = useState('');
+  const [animatedText, setAnimatedText] = useState(" ");
   const fullText = 'Effortlessly manage your inbox';
   const [scrollY, setScrollY] = useState(0);
   const router=useRouter();
@@ -94,8 +93,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [fullText]);
   
-  
-
   const features = [
     {
       icon: <Sparkles className="h-6 w-6" />,
@@ -172,7 +169,7 @@ export default function Home() {
   ];
 
   return (
-    <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-slate-900 text-slate-50' : 'bg-slate-50 text-slate-900'}`}>
+    <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-slate-950 text-slate-50' : 'bg-slate-50 text-slate-900'}`}>
        
       <Head>
         <title>Mail.ai | AI-Powered Email Client</title>
@@ -193,11 +190,11 @@ export default function Home() {
         
         {/* Animated gradient blobs */}
         <div 
-          className={`absolute top-0 left-1/4 w-96 h-96 rounded-full ${darkMode ? 'bg-blue-900/30' : 'bg-blue-300/30'} blur-3xl animate-pulse`}
+          className={`absolute top-0 left-1/4 w-96 h-96 rounded-full ${darkMode ? 'bg-red-900/30' : 'bg-blue-300/30'} blur-3xl animate-pulse`}
           style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         ></div>
         <div 
-          className={`absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full ${darkMode ? 'bg-purple-900/20' : 'bg-purple-300/20'} blur-3xl animate-pulse delay-700`}
+          className={`absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full ${darkMode ? 'bg-white-900/20' : 'bg-purple-300/20'} blur-3xl animate-pulse delay-700`}
           style={{ transform: `translateY(${-scrollY * 0.1}px)` }}
         ></div>
         <div 
@@ -266,6 +263,10 @@ export default function Home() {
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mb-10">
               Empowering you to manage your email with ease. Let AI handle the clutter while you focus on what matters.
             </p>
+            <p className="mb-5 min-h-[3rem]">
+              {animatedText}
+            </p>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/register">
                 <Button
@@ -286,10 +287,10 @@ export default function Home() {
         {/* Animated Mock Email Interface with loading effect */}
         <div 
           className={`w-full max-w-5xl mx-auto rounded-2xl shadow-2xl overflow-hidden ${
-            darkMode ? 'bg-slate-800 border border-slate-700 shadow-blue-900/10' : 'bg-white border border-slate-200 shadow-slate-200/50'
+            darkMode ? 'bg-slate-950 border border-slate-700 shadow-blue-900/10' : 'bg-white border border-slate-200 shadow-slate-200/50'
           } transform transition-all duration-700 hover:scale-105`}
         >
-          <div className={`h-12 ${darkMode ? 'bg-slate-900' : 'bg-slate-100'} flex items-center px-4 border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+          <div className={`h-12 ${darkMode ? 'bg-slate-950' : 'bg-slate-100'} flex items-center px-4 border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -311,7 +312,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-3/4 p-4">
-              <div className={`mb-4 p-4 rounded ${darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
+              <div className={`mb-4 p-4 rounded ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}>
                 <h3 className="font-medium mb-2">AI Suggestions</h3>
                 <div className="flex flex-wrap gap-2 text-sm">
                   <span className={`px-3 py-1.5 rounded-full ${darkMode ? 'bg-blue-900/50 text-blue-200' : 'bg-blue-100 text-blue-800'}`}>
@@ -350,7 +351,7 @@ export default function Home() {
       <section 
         id="features" 
         ref={featuresRef}
-        className={`py-24 ${darkMode ? 'bg-slate-800' : 'bg-white'} relative z-10`}
+        className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-white'} relative z-10`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-1000 transform ${featuresInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -389,7 +390,7 @@ export default function Home() {
       <section 
         id="pricing" 
         ref={pricingRef}
-        className={`py-24 ${darkMode ? 'bg-slate-900' : 'bg-slate-50'} relative z-10`}
+        className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-slate-50'} relative z-10`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-1000 transform ${pricingInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -416,7 +417,7 @@ export default function Home() {
                 } ${
                   plan.popular 
                     ? darkMode ? 'bg-blue-900/20 border-blue-700 shadow-lg shadow-blue-900/10' : 'bg-blue-50 border-blue-200 shadow-lg shadow-blue-500/10' 
-                    : darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'
+                    : darkMode ? 'bg-slate-900 border-slate-700' : 'bg-white border-slate-200'
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
@@ -465,7 +466,7 @@ export default function Home() {
       <section 
         id="testimonials" 
         ref={testimonialsRef}
-        className={`py-24 ${darkMode ? 'bg-slate-800' : 'bg-white'} relative z-10`}
+        className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-white'} relative z-10`}
       >
         <div className="max-w-6xl mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-1000 transform ${testimonialsInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -512,7 +513,7 @@ export default function Home() {
       <section 
         id="faq" 
         ref={faqRef}
-        className={`py-24 ${darkMode ? 'bg-slate-900' : 'bg-slate-50'} relative z-10`}
+        className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-slate-50'} relative z-10`}
       >
         <div className="max-w-4xl mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-1000 transform ${faqInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -562,7 +563,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-24 ${darkMode ? 'bg-gradient-to-br from-slate-900 to-blue-900/30' : 'bg-gradient-to-br from-blue-50 to-slate-50'} relative z-10`}>
+      <section className={`py-24 ${darkMode ? 'bg-gradient-to-br from-slate-900 to-blue-950/30' : 'bg-gradient-to-br from-blue-50 to-slate-50'} relative z-10`}>
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to transform your email experience?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto opacity-80">Join thousands of users who have simplified their email workflow with Mail.ai's intelligent features.</p>
@@ -582,7 +583,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-12 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+      <footer className={`py-12 ${darkMode ? 'bg-gray-950' : 'bg-gray-100'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
