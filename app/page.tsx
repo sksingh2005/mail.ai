@@ -1,7 +1,7 @@
 // pages/index.js
 "use client"
 // pages/index.js
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -15,7 +15,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ export default function Home() {
   const fullText = 'Effortlessly manage your inbox';
   const [scrollY, setScrollY] = useState(0);
   const router=useRouter();
-  const { data: session, status } = useSession();
+  const { data: session} = useSession();
   // Define refs for each section to trigger animations
   const { ref: featuresRef, inView: featuresInView } = useInView({
     triggerOnce: false,
@@ -204,7 +204,7 @@ export default function Home() {
       </div>
       
       {/* Navigation */}
-      <nav className={`sticky top-0 z-50 flex justify-between items-center p-6 ${darkMode ? 'bg-slate-900/80' : 'bg-slate-50/80'} backdrop-blur-md border-b ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+      <nav className={`sticky top-0 z-50 flex justify-between items-center p-6 ${darkMode ? 'bg-slate-950/80' : 'bg-slate-50/80'} backdrop-blur-md border-b ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
         <div className="flex items-center space-x-2">
           <Mail className={`h-6 w-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
           <span className="text-xl font-bold">Mail.ai</span>
@@ -271,13 +271,13 @@ export default function Home() {
               <Link href="/register">
                 <Button
                   size="lg"
-                  className="group bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-primary/25"
+                  className="group bg-gradient-to-r cursor-pointer from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-primary/25"
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
+              <Button variant="outline" size="lg" className="border-primary/20 cursor-pointer hover:bg-primary/5">
                 See how it works
               </Button>
             </div>
@@ -566,7 +566,7 @@ export default function Home() {
       <section className={`py-24 ${darkMode ? 'bg-gradient-to-br from-slate-900 to-blue-950/30' : 'bg-gradient-to-br from-blue-50 to-slate-50'} relative z-10`}>
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to transform your email experience?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-80">Join thousands of users who have simplified their email workflow with Mail.ai's intelligent features.</p>
+          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-80">Join thousands of users who have simplified their email workflow with Mail.ai&apos;s intelligent features.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className={`px-8 py-6 text-lg transition-all duration-300 hover:scale-105 shadow-xl ${darkMode ? 'bg-blue-600 hover:bg-blue-700 shadow-blue-900/20' : 'bg-blue-500 hover:bg-blue-600 shadow-blue-500/20'}`}>
               Start Your Free Trial
